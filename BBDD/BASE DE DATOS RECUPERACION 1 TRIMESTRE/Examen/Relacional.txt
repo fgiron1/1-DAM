@@ -1,0 +1,9 @@
+Espacios: ID(PK), nombre, descripcion, superficie
+Zonas: (IDEspacio (FK Espacios), numero)(PK), aforo_max, nombre
+Restricciones: ID(PK), IDZona(FK Zonas), momento_inicio, momento_fin
+Puntos: ID(PK), IDZona(FK Zonas), IDContiguo(FK Puntos) --No puedo ponerlo unique porque no podria ser NULL
+Movimientos: ID(PK), IDPunto(FK Puntos), IDPersona(FK Personas), momento, es_entrada
+Personas: ID(PK), nombre, apellidos, domicilio
+Enfermos: (IDPersona (FK Personas UNIQUE))(PK), numero_ss, fecha_deteccion, estado --Debe ser UNIQUE porque si hay una entidad enfermo, inevitablemente va a haber una entidad persona, por lo que este campo nunca seria NULL y el UNIQUE se puede poner
+Delincuentes: (IDPersona (FK Personas UNIQUE))(PK), reclama, motivo --Debe ser UNIQUE porque si hay una entidad delincuentes, inevitablemente va a haber una entidad persona, por lo que este campo nunca seria NULL y el UNIQUE se puede poner
+Rastreadores: ID(PK), IDEnfermo(FK Enfermos), nombre, telefono, email

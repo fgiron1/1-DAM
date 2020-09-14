@@ -1,0 +1,329 @@
+3. Realiza un algoritmo que lea un dato de teclado y calcule e imprima su inverso. Considere el caso especial del valor 0 mostrando el mensaje de error correspondiente.
+
+PSEUDOCÓDIGO GENERALIZADO DEL ALGORITMO PRINCIPAL
+
+Nombre de programa: Inverso
+
+ENTORNO
+	CONSTANTES: -
+	VARIABLES: num
+
+
+Inicio
+	obtenerdato
+	comprobarimprimir
+FinPP
+
+Módulos
+
+	obtenerdatos
+		Se solicita un numero por teclado
+		Leer numero
+	Fin obtenerdatos
+
+	comprobarimprimir
+		Se comprueba si el número es 0. De ser así, se envía un mensaje de error
+		Si no, se imprime el inverso del número
+	Fin comprobarimprimir
+
+
+PSEUDOCÓDIGO DETALLADO
+
+	<Inicio>
+		//obtenerdatos
+	  	  Escribir ("Por favor, introduzca un numero")
+	  	  Leer (num)
+		//Fin obtenerdatos
+
+		//comprobarimprimir
+	  		SI (num == 0)
+	  			Escribir ("El numero 0 no tiene inverso")
+	  		SINO
+	  			Escribir ("El inverso de " num " es " 1/num)
+		//Fin comprobarimprimir
+	Fin_PP
+
+____________________________________________________________________________________________________________________________________________
+
+6. Realizar un programa que resuelva una ecuación de segundo grado. 
+
+PSEUDOCÓDIGO GENERALIZADO DEL ALGORITMO PRINCIPAL
+
+Nombre de programa: Ecuacion2Grado
+
+
+Constantes: -
+
+Entradas: coeficiente primer termino, coeficiente segundo termino, termino independiente
+
+Salidas: primera solucion, segunda solucion
+
+
+Inicio
+	obtenerdatos
+	calculosolucion
+Fin
+
+
+Módulos
+
+	obtenerdatos
+			Se solicita el primer coeficiente
+			Leer coeficiente
+			Se solicita el segundo coeficiente
+			Leer coeficiente
+			Se solicita el tercer coeficiente
+			Leer coeficiente
+	Fin obtenerdatos
+
+	calculosolucion
+			Se comprueba si el discriminante de la ecuación es menor que 0
+			Si es así, se envía un mensaje de error
+			Si no, efectuamos el cálculo de la ecuación
+			Se imprimen las soluciones
+	Fin calculosolucion
+
+PSEUDOCÓDIGO DETALLADO
+
+	<Inicio>
+		//obtenerdatos
+			Escribir ("Introduzca el coeficiente del primer término")
+			Leer coef1
+			Escribir ("Introduzca el coeficiente del segundo término")
+			Leer coef2
+			Escribir ("Introduzca el término independiente")
+			Leer coef3
+		//Fin obtenerdatos
+
+		//calculosolucion
+			disc = coef2^2 - 4*coef1*coef3
+			SI (disc < 0)
+				Escribir ("La ecuación no tiene soluciones reales")
+			SINO SI (disc == 0)
+				sol1 = (-1*coef2)/(2*coef1)
+				Escribir ("La ecuación tiene una única solución: x = sol1")
+			SINO
+				sol1 = (-coef2 + sqrt(disc)) / (2*coef1)
+				sol2 = (-coef2 - sqrt(disc)) / (2*coef1)
+				Escribir ("La ecuación tiene dos soluciones: x = sol1 y x = sol2")
+		//Fin calculosolucion
+	Fin_PP
+____________________________________________________________________________________________________________________________________________
+
+8. Escriba un algoritmo que lea un instante de tiempo dado en horas y minutos y escriba
+como respuesta los mensajes “Good morning” “Good afternoon” “Good night”, de acuerdo
+con las siguientes reglas: 
+
+a. Es de día desde las 7:30 hasta las 14:00 horas.
+b. Es tarde desde las 14:01 hasta las horas 20:30.
+c. Es noche desde las 20:31 hasta las horas 7:29. 
+
+PSEUDOCÓDIGO GENERALIZADO
+
+Nombre del programa: SaludosDistintos
+
+Constantes: -
+
+Entradas: horas, minutos
+
+Salidas: -
+
+	Inicio
+		validaciondatos
+		eleccionsaludo
+	Fin
+
+Módulos
+
+	//validaciondatos
+		Solicitar la hora
+		Leer la hora
+		Comprobar que la hora es un número entre 0 y 24
+		Solicitar los minutos
+		Leer los minutos
+		Comprobar que los minutos es un número entre 0 y 60
+	//Fin validaciondatos
+
+	//eleccionsaludo
+		Transformar la hora y minutos a cantidad de minutos total
+		Si el total está entre 450 y 840, escribir ("Good morning")
+		Sino, si el total está entre 841 y 1230, escribir ("Good afternoon")
+		Sino, escribir ("Good night")
+	//Fin eleccionsaludo
+
+PSEUDOCÓDIGO DETALLADO
+
+	<Inicio>
+		//validaciondatos
+			Escribir ("Introduzca la hora")
+			Leer hora
+		MIENTRAS (hora < 0 || hora > 24)
+			Escribir ("Por favor, introduzca un número entre 0 y 24.")
+			Leer hora
+		FIN MIENTRAS
+			Escribir ("Introduzca los minutos")
+			Leer min
+		MIENTRAS (min < 0 || min > 59)
+			Escribir ("Por favor, introduzca un número entre 0 y 59.")
+			Leer min
+		FIN MIENTRAS
+		//Fin validaciondatos
+		//eleccionsaludo
+			total = hora * 60 + min
+			SI (total >= 450 && total <= 840)
+				Escribir ("Good morning")
+			SINO SI (total >= 841 && total <= 1230)
+				Escribir ("Good afternoon")
+			SINO
+				Escribir ("Good night")
+		//Fin eleccionsaludo
+	Fin_PP
+
+____________________________________________________________________________________________________________________________________________
+
+10. Diseñe un algoritmo que lea de teclado las coordenadas cartesianas de un punto en el
+plano y calcule e imprima el cuadrante al que pertenece dicho punto (no considere los
+ejes de coordenadas). Realice el ejercicio de dos formas distintas:
+a. Utilizando cuatro estructuras de selección simples independientes.
+b. Utilizando dos estructuras de selección dobles anidadas.
+¿Cuál de las dos soluciones considera más eficiente? ¿Por qué? (Nota: siga la traza
+de ambos programas con varios juegos de ensayo y cuente las comparaciones
+realizadas en cada uno de ellos) 
+
+PSEUDOCÓDIGO GENERALIZADO
+
+Constantes: -
+
+Entradas: primera coordenada, segunda coordenada
+
+Salidas: -
+
+	Inicio
+		obtenerdatos
+		determinarcuadrante
+	Fin
+
+Módulos:
+
+	//obtenerdatos
+		Solicitar al usuario la primera coordenada
+		Leer primera coordenada
+		Solicitar al usuario la segunda coordenada
+		Leer segunda coordenada
+	//Fin obtenerdatos
+
+	//determinarcuadrante
+		Se comprueba si está en el p
+	//fin determinarcuadrante
+
+/////////////////////////////////////////////////////////////SEGUNDA POSIBILIDAD////////////////////////////////////////////////
+
+	//determinarcuadrante
+		Se comprueba si está en el primer o cuarto cuadrante
+		entonces se comprueba en cual de esos dos está
+		Se imprime el cuadrante en el que está
+		Sino, está en el segundo o tercer cuadrante
+		entonces se comprueba en cual de esos dos está
+		Se imprime el cuadrante en el que está
+
+PSEUDOCÓDIGO DETALLADO
+
+	<Inicio>
+		//obtenerdatos
+			Escribir ("Introduzca la primera coordenada")
+			Leer coord1
+			Escribir ("Introduzca la segunda coordenada")
+			Leer coord2
+		//Fin obtenerdatos
+		//determinarcuadrante
+			SI (coord1 > 0 && coord2 > 0)
+				Escribir ("Está en el primer cuadrante")
+			SI (coord1 < 0 && coord2 > 0)
+				Escribir ("Está en el segundo cuadrante")
+			SI (coord1 < 0 && coord2 < 0)
+				Escribir ("Está en el tercer cuadrante")
+			SI (coord1 > 0 && coord2 < 0)
+				Escribir ("Está en el cuarto cuadrante")
+
+/////////////////////////////////////////////////////////////SEGUNDA POSIBILIDAD////////////////////////////////////////////////
+	
+			SI (coord1 > 0)
+				SI (coord2 > 0)
+					Escribir ("Está en el primer cuadrante")
+				SINO
+					Escribir ("Está en el cuarto cuadrante")
+			SINO
+				SI (coord2 > 0)
+					Escribir ("Está en el segundo cuadrante") 
+				SINO
+					Escribir ("Está en el tercer cuadrante")
+		//Fin determinarcuadrante
+	Fin_PP
+
+____________________________________________________________________________________________________________________________
+
+Diseñar un algoritmo que escriba en pantalla los N primeros números naturales, sus
+raíces cuadradas, su potencia n-sima y el producto de todos ellos. Restricción N es un
+número entre 1 y 20 y n entre 2 y 5.
+
+PSEUDOCÓDIGO GENERALIZADO
+
+Constantes: -
+
+Entradas: número N, número n
+
+Salidas: -
+
+<Inicio>
+	obtenerdatos
+	calculos
+
+<Fin>
+
+Módulos:
+	//obtenerdatos
+		Solicitar al usuario el número N
+		Leer número N
+		Validar número N
+		Solicitar al usuario el número n
+		Leer número n
+		Validar número n
+	//Fin obtenerdatos
+
+	//calculos
+		Mostrar al usuario una lista de los N primeros número naturales
+		Calcular las raices y mostrarlas en una columna
+		Calcular las n-ésimas potencias y mostrarlas en otra columna
+		Calcular el producto de los números y mostrarlos
+	//Fin menucalculos
+
+
+
+PSEUDOCÓDIGO DETALLADO
+
+<Inicio>
+	//obtenerdatos
+		Escribir ("Escriba un número entre 1 y 20: ")
+		Leer N
+		MIENTRAS (n < 1 || n > 20)
+		Escribir ("Por favor, escriba un número entre 1 y 20: ")
+		Leer N
+		FIN MIENTRAS
+		Escribir ("Escriba un número entre 2 y 5: ")
+		Leer N
+		MIENTRAS (n < 2 || n > 5)
+		Escribir ("Por favor, escriba un número entre 2 y 5: ")
+		Leer N
+		FIN MIENTRAS
+	//Fin obtenerdatos
+	//calculos
+		PARA (i < N, i++)
+			Escribir (i)
+			Escribir (sqrt(i))
+			Escribir (i^n)
+			producto *= i
+		FIN PARA
+
+		Escribir ("El producto de todos es: producto")
+	//Fin calculos
+Fin_PP

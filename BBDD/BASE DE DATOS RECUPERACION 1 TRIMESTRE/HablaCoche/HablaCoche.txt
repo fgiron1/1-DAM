@@ -1,0 +1,28 @@
+COMENTARIOS HABLACOCHE:
+
+- La cantidad de plazas que se ofertan en un viaje son decididas por el dueño del coche, independientemente
+  de cuantas plazas físicas tenga el coche y son representadas a través del atributo 
+
+- El problema de trabajar con booleanos es que la estructura de las tablas no puede asegurar que no haya
+  información contradictoria (inscripción revocada pero no hay una factura de penalización) El booleano de
+  completo es un ejemplo de que es poco practico; cuando alguien cancela una inscripción, también se debe
+  modificar el booleano de completo, no es algo que se refleje en el modelo de forma natural y organica
+
+Cosas de la lógica que sí puedo hacer:
+
+- CHECK en el campo de fecha de las valoraciones que compare la fecha de valoracion con el CURRENT_TIMESTAMP
+  y si han pasado mas de 10 dias no registrarla
+
+____________________________________
+
+- Campos aceptada y revocada en inscripción: Aceptada significa si el creador del viaje la ha revisado y aceptado
+  y revocada significa si el usuario ha decidido cancelar la inscripción y por lo tanto
+
+- El importe del viaje completo no se registra, en su lugar se registra el importe de los tramos que lo componen.
+
+- Un campo "completo" en viaje para significar que todas las plazas se han ocupado y otro "cancelado".
+
+- No sé comprobar si una plaza que ha sido cancelada por el usuario ha sido ocupada o no.
+  porque las plazas son indistinguibles entre sí, no hay una identificación de plaza
+
+- Estaba pensando que siel viaje 

@@ -1,0 +1,22 @@
+COMENTARIOS SOBRE EL MODELO ER:
+
+- ¿Cómo indico que la turba es entidad débil de pueblo, y no de vecino? Lo que he hecho
+  ha sido poner el recuadrito en el rombo de la relación que corresponde.
+
+- CARDINALIDAD MonstruoAterrorizaPueblo: Hay monstruos que pueden tener a ningún pueblo asociado
+  (El enunciado dice "ALGUNOS monstruos van a los pueblos cercanos a aterrorizarlos"), y por ello,
+  también puede haber pueblos que no sean atterorizados por ningún monstruo.
+
+- CARDINALIDAD MonstruoCompuestoPorParte: Supongo que la base de datos almacena los datos de las
+  partes de los monstruos también, sin que sea necesario referirlas a un monstruo que las use.
+  Como un inventario de las partes que se tienen.
+
+MODELO RELACIONAL:
+
+Pueblos: ID(PK), nombre, tamano, distancia_castillo
+Monstruos: nombre(PK), IDPueblo(FK Pueblos), altura, fecha_creacion
+MonstruosOrdenes: (IDOrden, IDMonstruo) (PK), IDOrden (FK Ordenes), IDMonstruo (FK Monstruos)
+Partes: ID(PK), IDMonstruo(FK Monstruos), tipo, tamano, animal
+Vecinos: ID(PK), IDPueblo(FK Pueblos), IDTurba(FK Turbas), nombre, direccion
+Turbas: ID(PK), IDPueblo(FK Pueblos), nombre, categoria
+Ordenes: ID(PK), IDOrden(FK Ordenes), nombre, descripcion

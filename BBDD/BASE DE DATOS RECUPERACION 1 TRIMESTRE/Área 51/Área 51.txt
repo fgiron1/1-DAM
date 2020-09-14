@@ -1,0 +1,28 @@
+COMENTARIOS:
+
+- Creo que una generalización en el caso de ALIEN - VIVO - MUERTO no es el modelo adecuado (porque MUERTO no tiene
+  atributos extra), pero la he puesto con tal de practicar las generalizaciones en SQL. Supongamos que muerto tiene
+  tres atributos extras: fecha_fallecimiento, causa, peligro (indice del 1 al 5)
+
+- En este modelo, no tengo manera de saber que un alien solo esta vivo o solo esta muerto. La estructura
+  de las tablas me permite la posibilidad de introducir a un mismo alien en Aliens_vivos y a la vez en
+   Aliens_muertos.
+
+- El hecho de que los jefes de seccion tengan que "responder ante el comandante" lo he pensado implícito
+  en el hecho de que se correspondan con una fuerza de seguridad. Es decir, tienen que responder ante
+  el comandante por el hecho de estar asociado a la fuerza de seguridad que precisamente comanda ese
+  comandante
+
+- En el diagrama, la generalización de Alien debería ser total, pero entonces tendría que duplicar
+  las relaciones de la entidad ALIEN
+
+
+Niveles: ID(PK), numero, nombre, indice
+FuerzasSeguridad: ID(PK) denominacion, numero_soldados, armamento
+NivelesFuerzasSeguridad: (IDNivel (FK Niveles), IDFuerzaSeguridad (FK FuerzasSeguridad)) (PK), jefeSeccion
+Comandantes: ID(PK), nombre, apellidos, canal
+Cientificos: ID(PK), IDNivel(FK Niveles), nombre, apellidos, antiguedad, especializacion
+Aliens: ID(PK), IDNave (FK Naves), IDNivel(FK Niveles), apariencia, tecnologia
+AliensVivos: IDAlien(FK Aliens UNIQUE) (PK), idioma, intenciones
+AliensMuertos: IDAlien(FK Aliens UNIQUE) (PK), fecha_fallecimiento, causa, peligro
+Naves: ID(PK), fecha_descubrimiento, lugar_descubrimiento, estado_descubrimiento, fecha_llegada 

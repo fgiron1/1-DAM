@@ -1,0 +1,9 @@
+Espacio: nombre, descripcion, superficie
+Zona: numero, aforo_max, nombre
+Restriccion: momento_inicio, momento_fin
+Punto: ID
+Movimiento: momento, es_entrada
+Persona: nombre, apellidos, domicilio
+Enfermo: numero_ss, fecha_deteccion, estado
+Delincuente: reclama, motivo
+Rastreador: nombre, telefono, email

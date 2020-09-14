@@ -1,0 +1,21 @@
+COMENTARIOS:
+
+- Solo vamos a registrar las macetas que sí tienen plantas (Porque son las únicas en las que PUEDEN
+  vivir los nabucodonsorcitos).
+
+- El domicilio personal no se considerará un lugar de trabajo en la base de datos (NULL).
+
+- Había pensado el campo "lugar" como campo de la relación "se encuentra en". Pero al pasarlo al modelo físico,
+  decidí hacer una tabla por cada subtipo en la generalización de edificio. Entonces resulta en una relación ternaria,
+  pero no necesito relacionar lugar de trbaajo con vivienda, osea que decidí repetir el atributo lugar en vivienda
+  y lugar trabajo. EDIT: HACER LA GENERALIZACIÓN TOTAL ME DA MAS PROBLEMAS (REPETICIÓN DE 4 CAMPOS) QUE HACERLA PARCIAL
+  Y CON 3 TABLAS PARA CADA UNO.
+
+Plantas: ID(PK), IDMaceta(FK Macetas), especie, nombre, tipo_luz, interior
+Criaturas: DNI(PK), IDMaceta(FK Macetas), edad, color, nombre
+Macetas: ID(PK), IDEdificio(FK Edificios), dimensiones, material
+MacetasEdificios: (IDMaceta (FK Macetas), IDEdificios(FK Edificio)) PK, lugar
+Edificios: ID(PK), direccion, ciudad, cp
+EdificioViviendas: ID(PK), IDEdificio(FK Edificios UNIQUE), superficie_total, habitaciones, superficie_terrazas
+EdificiosTrabajos: ID(PK), IDEdificio(FK Edificios UNIQUE), mesas, despachos
+Personas: ID(PK), IDVivienda(FK EdificiosViviendas), IDTrabajo(FK EdificiosTrabajos) nombre, apellidos, edad, apodo
